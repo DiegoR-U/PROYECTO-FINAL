@@ -10,4 +10,5 @@ gradle-app.setting
 
 .env.local
 .env.*.local
+selenium-tests/target/
 .DS_Store
