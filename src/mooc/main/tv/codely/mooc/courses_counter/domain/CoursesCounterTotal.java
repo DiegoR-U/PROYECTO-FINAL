@@ -5,6 +5,7 @@ import tv.codely.shared.domain.IntValueObject;
 public final class CoursesCounterTotal extends IntValueObject {
     public CoursesCounterTotal(Integer value) {
         super(value);
+        ensureIsNotNegative(value);
     }
 
     public CoursesCounterTotal() {
@@ -17,5 +18,11 @@ public final class CoursesCounterTotal extends IntValueObject {
 
     public CoursesCounterTotal increment() {
         return new CoursesCounterTotal(value() + 1);
+    }
+
+    private void ensureIsNotNegative(Integer value) {
+        if (value != null && value < 0) {
+            throw new IllegalArgumentException(String.format("The courses counter total <%s> cannot be negative", value));
+        }
     }
 }

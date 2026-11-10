@@ -44,6 +44,10 @@ public final class CoursesCounter {
     }
 
     public void increment(CourseId id) {
+        if (hasIncremented(id)) {
+            throw new CourseAlreadyCounted(id);
+        }
+
         total = total.increment();
         existingCourses.add(id);
     }
